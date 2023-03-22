@@ -59,27 +59,29 @@
         </div>
         <v-divider></v-divider>
         <div class="my-2">
-          <h3>Datas</h3>
-          <v-row>
-            <table id="list">
-              <thead>
-                <tr>
-                  <th>Key</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>TestKey</td>
-                  <td>TestValue</td>
-                </tr>
-                <!-- <tr v-for="row in lists" :key="row.id" class="my-2">
-                  <td><input type="checkbox"></td>
-                  <td>{{ row.name }}</td>
-                </tr> -->
-              </tbody>
-            </table>
-          </v-row>
+          <h3>OCR Datas</h3>
+          <div id="list">
+            <div class="list-head list-col">
+              <div>Key</div>
+              <div>Value</div>
+              <div>Formated Key</div>
+            </div>
+            <div class="list-body">
+              <div class="list-col list-row" v-for="row, index in datas" :key="index">
+                <div>{{ row.key }}</div>
+                <div>{{ row.value }}</div>
+                <div>
+                  <select>
+                    <option>company[企業名]</option>
+                    <option>title[件名]</option>
+                    <option>promise[納期]</option>
+                    <option>date[発注日]</option>
+                    <option>table[発注表]</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </v-container>
     </v-container>
@@ -95,7 +97,7 @@ export default {
           status: 0,
           isPDF: false,
           isCSV: false,
-          data: [
+          datas: [
               {
                   "key": "testKey",
                   "value": "testValue"
@@ -106,24 +108,45 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .document {
   width: 100%;
 }
 
 #list {
   width: 100%;
-  padding: 5px;
+  margin: 5px;
 
+  border: solid 1px #000;
   border-radius: 5px;
 }
 
-#list thead {
-  padding-bottom: 10px;
-  border-bottom: solid 1px fff;
+.list-col {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  text-align: center;
 }
 
-#list td {
-  text-align: center;
+.list-head {
+  padding: 5px 0;
+  border-bottom: solid 1px #000;
+}
+.list-head div {
+  font-weight: bold;
+}
+
+.list-body {
+  padding: 5px 0;
+}
+.list-row {
+  padding: 3px 0;
+}
+
+select {
+  border: solid 1px #000;
+  padding: 0 5px;
+}
+select::before {
+  content: "&#9650;"
 }
 </style>
