@@ -20,11 +20,11 @@
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon :icon="item.icon"></v-icon>
           </v-list-item-action>
-          <v-list-item-content>
+          <!-- <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
+          </v-list-item-content> -->
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -43,13 +43,19 @@
 // import { RouterLink, RouterView } from 'vue-router'
 import { RouterView } from 'vue-router'
 import { ref } from 'vue'
+import { mdiFolder, mdiFileDocumentOutline} from '@mdi/js'
 
 const drawer = ref(true)
 const items = ref([
   {
-    icon: 'folder',
+    icon: mdiFolder,
     title: 'Folder',
     to: '/'
+  },
+  {
+    icon: mdiFileDocumentOutline,
+    title: 'Format',
+    to: '/format'
   }
 ])
 </script>
