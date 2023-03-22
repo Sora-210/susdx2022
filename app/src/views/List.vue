@@ -4,34 +4,32 @@
     <v-divider></v-divider>
     <v-container class="mt-3">
       <v-row>
-        <table id="list">
-          <thead>
-            <tr>
-              <th>Action</th>
-              <th>FileName</th>
-              <th>Upload Date</th>
-              <th>COMPANY Name</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in lists" :key="row.id" class="my-2">
-              <td><input type="checkbox"></td>
-              <td>{{ row.name }}</td>
-              <td>{{ row.date }}</td>
-              <td>{{ row.company }}</td>
-              <td>
+        <div id="list">
+          <div class="list-head list-col">
+            <div>Action</div>
+            <div>FileName</div>
+            <div>Upload Date</div>
+            <div>COMPANY Name</div>
+            <div>Status</div>
+          </div>
+          <div class="list-body">
+            <div class="list-col list-row" v-for="row, index in lists" :key="index">
+              <div><input type="checkbox"></div>
+              <div>{{ row.name }}</div>
+              <div>{{ row.date }}</div>
+              <div>{{ row.company }}</div>
+              <div>
                 <v-chip
-                  small
+                  size="small"
                   :color="chips[row.status].color"
-                  outlined
+                  variant="outlined"
                 >
                   {{ chips[row.status].text }}
                 </v-chip>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </v-row>
     </v-container>
   </div>
@@ -48,9 +46,13 @@ const chips = ref({
     color: "deep-purple accent-4",
     text: "Processing"
   },
-  comfirm: {
+  key: {
     color: "warning",
-    text: "Comfirm"
+    text: "Key Error"
+  },
+  company: {
+    color: "warning",
+    text: "Company Error"
   },
   error: {
     color: "error",
@@ -78,7 +80,14 @@ const lists = ref([
     name: "File3",
     date: "2023/03/01",
     company: "Test",
-    status: "comfirm"
+    status: "key"
+  },
+  {
+    id: "iuygvbnjhgbnj",
+    name: "File3",
+    date: "2023/03/01",
+    company: "---",
+    status: "company"
   },
   {
     id: "cdrtghjikaloiuyt",
@@ -93,18 +102,30 @@ const lists = ref([
 <style>
 #list {
   width: 100%;
-  padding: 5px;
+  margin: 5px;
 
   border: solid 1px #000;
   border-radius: 5px;
 }
 
-#list thead {
-  padding-bottom: 10px;
-  border-bottom: solid 1px #000;
+.list-col {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  text-align: center;
 }
 
-#list td {
-  text-align: center;
+.list-head {
+  padding: 5px 0;
+  border-bottom: solid 1px #000;
+}
+.list-head div {
+  font-weight: bold;
+}
+
+.list-body {
+  padding: 5px 0;
+}
+.list-row {
+  padding: 3px 0;
 }
 </style>
