@@ -11,7 +11,8 @@
     "extensions": [
 		"dbaeumer.vscode-eslint",
 		"mhutchie.git-graph",
-		"ms-vscode.vscode-typescript-next"
+		"ms-vscode.vscode-typescript-next",
+    "Vue.volar"
 	],
 	"remoteUser": "root"
 }
