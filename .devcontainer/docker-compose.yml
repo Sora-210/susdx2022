@@ -7,3 +7,9 @@ services:
     volumes:
       - ../:/work:cached
       - ~/.ssh:/root/.ssh
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    restart: always
