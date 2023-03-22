@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>&gt; FileList</h1>
+    <h1>&gt; DocumentList</h1>
     <v-divider></v-divider>
     <v-container class="mt-3">
       <v-row>
@@ -15,7 +15,7 @@
           <div class="list-body">
             <div class="list-col list-row" v-for="row, index in lists" :key="index">
               <div><input type="checkbox"></div>
-              <div>{{ row.name }}</div>
+              <div><a href="/view">{{ row.name }}</a></div>
               <div>{{ row.date }}</div>
               <div>{{ row.company }}</div>
               <div>
@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref } from 'vue'
 const chips = ref({
   success: {
@@ -63,35 +64,35 @@ const chips = ref({
 const lists = ref([
   {
     id: "sdfghjukjmnbvfghj",
-    name: "File1",
+    name: "2345-876543-87654.png",
     date: "2023/01/01",
     company: "XYZ",
     status: "success"
   },
   {
     id: "mnhuikmnbhuikmn",
-    name: "File2",
+    name: "3456-8765-7654.png",
     date: "2023/03/01",
     company: "ABC",
     status: "processing"
   },
   {
     id: "iuygvbnjhgbnj",
-    name: "File3",
+    name: "987654-76543-6543.png",
     date: "2023/03/01",
     company: "Test",
     status: "key"
   },
   {
     id: "iuygvbnjhgbnj",
-    name: "File3",
+    name: "23456-9876543-2345678.png",
     date: "2023/03/01",
     company: "---",
     status: "company"
   },
   {
     id: "cdrtghjikaloiuyt",
-    name: "File4",
+    name: "987654-1234567-96236.png",
     date: "2023/04/01",
     company: "Enter",
     status: "error"
@@ -99,7 +100,7 @@ const lists = ref([
 ])
 </script>
 
-<style>
+<style scoped>
 #list {
   width: 100%;
   margin: 5px;
@@ -127,5 +128,9 @@ const lists = ref([
 }
 .list-row {
   padding: 3px 0;
+}
+
+a {
+  border-bottom: solid 1px hsla(160, 100%, 37%, 1);
 }
 </style>
